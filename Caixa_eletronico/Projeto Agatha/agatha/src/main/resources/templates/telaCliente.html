@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Conta do Cliente</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+</head>
+
+<body>
+    <div class="container">
+        <div th:switch="${clientes}" class="container my-5">
+            <div th:case="*">
+                <form th:action="@{/alterar}" th:object="${cliente}" method="post">
+                    <table class="table table-striped table-responsive-md">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Saldo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <td th:text="${cliente.nome}"></td> <!-- aqui retorna o nome na tela como texto -->
+                            <td th:text="${cliente.saldo}"></td>
+                            <input type="hidden" th:field="*{nome}" class="col-md-6 offset-md-3" id="nome"
+                                placeholder="Nome" />
+                            <input type="hidden" th:field="*{saldo}" class="col-md-6 offset-md-3" id="saldo"
+                                placeholder="Saldo" />
+                            
+                            <td>
+                                <input type="text" th:name="dinheiro" class="form-control" /> <!--Campo de digitação do valor-->
+                                <input type="submit" th:name="action"  value="depositar"> <!--Opção -->
+                                <input type="submit" th:name="action" value="sacar"> <!--Opção -->
+                            </td>
+                            <input type="hidden" id="id" th:field="*{id}">
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+    </form>
+    </div>
+</body>
+
+</html>

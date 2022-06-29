@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>cadastrar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+</head>
+
+<body>
+    <div class="container">
+        <form th:action="@{/cadastrar}" th:object="${cliente}" method="post"><!-- chama metodo cadastrar passando objeto cliente  -->
+
+            <div class="form-group">
+                <div class="   col-md-6 offset-md-3">
+                    <label for="nome" class="col-md-6 offset-md-3">Nome</label>
+                    <input type="text" th:field="*{nome}" class="col-md-6 offset-md-3" id="nome" placeholder="Nome" />
+                </div> <!-- th:field thyme leaf -->
+            </div>
+            <div class="form-group">
+                <div class="   col-md-6 offset-md-3">
+                    <label for="name" class="col-md-6 offset-md-3">Saldo</label>
+                    <input type="number" th:field="*{saldo}" class="col-md-6 offset-md-3" id="saldo"
+                        placeholder="Saldo" /> <!-- th:field thyme leaf -->
+                </div>
+            </div>
+
+
+            <div class="col-md-6 offset-md-3"> <!-- esse é o botão de cadastrar -->
+                <input type="submit" class="btn" value=" Cadastrar ">
+            </div>
+            <div class="col-md-6 offset-md-3"> <!-- esse é o botão de consultar -->
+                <a th:href="@{/consultar/{id}(id=${cliente.id})}" class="btn">Consultar</a>
+            </div>
+            <input type="hidden" id="id" th:field="*{id}"> <!-- passando o ID -->
+
+    </div>
+    </form>
+    </div>
+</body>
+
+</html>
+
